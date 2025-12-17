@@ -1,6 +1,9 @@
 package org.yearup.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.yearup.data.CategoryDao;
 import org.yearup.data.ProductDao;
 import org.yearup.models.Category;
@@ -35,10 +38,16 @@ public class CategoriesController
     }
 
     // add the appropriate annotation for a get action
+    @GetMapping("{id}")
+    @PreAuthorize("permitAll()")
     public Category getById(@PathVariable int id)
     {
         // get the category by id
-        return null;
+        Category result = this.categoryDao.getById(id);
+        if (result == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return result;
     }
 
     // the url to return all products in category 1 would look like this
@@ -51,11 +60,14 @@ public class CategoriesController
     }
 
     // add annotation to call this method for a POST action
+    @PostMapping()
     // add annotation to ensure that only an ADMIN can call this function
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.CREATED)
     public Category addCategory(@RequestBody Category category)
     {
         // insert the category
-        return null;
+        return this.categoryDao.create(category);
     }
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
@@ -67,9 +79,12 @@ public class CategoriesController
 
 
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
+    @DeleteMapping("{id}")
     // add annotation to ensure that only an ADMIN can call this function
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategory(@PathVariable int id)
     {
-        // delete the category by id
+        this.categoryDao.delete(id);
     }
 }
