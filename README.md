@@ -1,6 +1,8 @@
 # Capstone 3 – EasyShop (Backend + Frontend)
 
-This project contains a Java Spring Boot backend and a static HTML/CSS/JavaScript frontend.
+EasyShop is a full-stack web application that simulates an online shopping experience. This app allows users to browse 
+products and interact with a storefront on the frontend, while the system manages data behind the scenes. This project 
+can be used in the real-world as a foundation for e-commerce platforms. 
 
 When you unzip the archive, you should get a folder named `capstone-3` with this structure:
 
@@ -10,9 +12,9 @@ capstone-3/
   frontend-ui/         # Static HTML, CSS, JS
 ````
 
----
+## Software Requirements
 
-## Requirements
+### The Programs and Tools Needed:
 
 * **Java Development Kit (JDK) 17**
 * **IntelliJ IDEA Community Edition** (latest)
@@ -20,100 +22,44 @@ capstone-3/
 * **MySQL Workbench** (to run the database script)
 * Internet browser (Chrome, Firefox, Edge, Safari, etc.)
 
-You do **not** need to install Maven separately; IntelliJ can use its bundled Maven.
-
 ---
 
-## How to open the project in IntelliJ
+## Application Features
 
-1. Unzip the project so you have a folder called `capstone-3`.
-2. Open IntelliJ IDEA (Community).
-3. Choose **File → Open...**.
-4. Select the `capstone-3` folder and click **Open**.
-5. When IntelliJ asks you to “Trust” the project, click **Trust**.
-6. IntelliJ will load the project with two modules:
+* Product Browsing- Users can view available products through the website interface.
+* Data Management- Product and application data are stored and retrieved from a database.
+* Separation of Frontend and Backend- The website and server work together but are built as separate parts of the application.
+* Local Web Access- The application runs locally and can be accessed through a web browser. 
+
+* IntelliJ will load the project with two modules:
 
     * `backend-api` – Java Spring Boot backend
     * `frontend-ui` – static HTML/CSS/JS
 
-If IntelliJ asks you to configure an SDK, choose **JDK 17**.
+---
+
+## How the Application Works
+
+The website displays information and sends user requests. The server processes those requests and talks to the database.
+The database stores all product and application data securely. 
 
 ---
 
-## Database setup (MySQL)
+## What I Learned
 
-Before you run the backend, you must create and initialize the database.
+Throughout this project, I gained a better understanding of how complete applications are built and how different pieces work together.
 
-1. Make sure **MySQL Server** is running on your machine.
+The areas I learned about include:
 
-2. Open **MySQL Workbench**.
+* Application Structure – How large projects are organized into clear sections.
 
-3. Connect to your local MySQL server (for example, `localhost` with your MySQL username).
+* Frontend and Backend Interaction – How a website communicates with a server.
 
-4. In MySQL Workbench, go to **File → Open SQL Script...**.
+* Database Usage – How data can be stored and reused instead of being lost.
 
-5. Navigate to the project folder and open:
+* Problem Solving – How to troubleshoot issues when parts of the application don’t work as expected.
 
-   ```text
-   capstone-3/backend-api/database/create_database_easyshop.sql
-   ```
-
-6. Once the script is open in Workbench, click the **Execute** button (the lightning bolt icon) to run the script.
-
-    * This will create the database and any required tables/data for the EasyShop application.
-
-7. In IntelliJ, open:
-
-   ```text
-   capstone-3/backend-api/src/main/resources/application.properties
-   ```
-
-   and check the database connection settings (URL, username, and password).
-   Make sure:
-
-    * The **database name** matches what the SQL script created.
-    * The **username and password** match a valid MySQL user on your system.
-
-   If needed, you can either:
-
-    * Update `application.properties` to match your MySQL username/password, **or**
-    * Create a MySQL user in Workbench that matches the values in `application.properties`.
-
-Once the script has run successfully and the credentials match, the backend will be able to connect to the database.
-
----
-
-## How to run the backend
-
-1. In IntelliJ, make sure the project is fully indexed and Maven dependencies have been downloaded (you may see a progress bar at the bottom).
-2. In the **Run configuration** dropdown (top-right of IntelliJ), choose:
-
-   **`Backend (Spring Boot)`**
-
-   (If it doesn’t exist, you can run the main class manually by right-clicking the `EasyshopApplication` class in `backend-api` and choosing **Run**.)
-3. Click the green **Run** triangle.
-4. The Spring Boot application will start and listen on:
-
-   ```text
-   http://localhost:8080
-   ```
-
-Check the Run tool window for any startup errors (for example, database connection problems). If there are errors, double-check your MySQL setup and `application.properties` values.
-
----
-
-## How to run the frontend
-
-1. In IntelliJ’s **Project** view, navigate to:
-
-   ```text
-   frontend-ui/index.html
-   ```
-
-2. Right-click `index.html` → **Open in Browser** → choose your browser.
-
-3. Alternatively, you can locate `frontend-ui/index.html` in Finder / File Explorer and double-click it to open it in a browser.
-
+* Attention to Detail – How small configuration issues can affect the entire application.
 ---
 
 ## Where to make changes
@@ -138,3 +84,10 @@ Check the Run tool window for any startup errors (for example, database connecti
   frontend-ui/js/
   frontend-ui/images/
   ```
+  
+---
+  
+
+## Personal Growth and Reflection
+
+This project demonstrated that application development extends far beyond writing individual lines of code, it requires understanding how multiple systems and components interact within a complete architecture. I learned how front-end logic, data handling, and overall application flow must work together to produce a reliable and maintainable solution.This project helped me build confidence in my ability to understand larger systems overall. I also learned the value of asking questions and using available resources when I felt stuck. Completing this project helped me reflect on my current skill set and identify specific areas for growth, such as system design and optimization, which I plan to focus on in future projects. Ultimately, this experience strengthened my confidence and clarified my long-term goals as a developer.
